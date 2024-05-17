@@ -30,7 +30,7 @@ env = environ.Env(
         "django-insecure-j8op9)1q8$1&0^s&p*_0%d#pr@w9qj@1o=3#@d=a(^@9@zd@%j",
     ),
     ALLOWED_HOSTS=(list, ["*"]),
-    CSRF_TRUSTED_ORIGINS=(list, ["http://localhost:8000"]),
+    CSRF_TRUSTED_ORIGINS=(list, ["*"]),
 )
 
 env.read_env(os.path.join(BASE_DIR, ".env"), overwrite=True)
@@ -42,6 +42,7 @@ SECRET_KEY = env("SECRET_KEY")
 DEBUG = env("DEBUG")
 
 ALLOWED_HOSTS = env("ALLOWED_HOSTS")
+CSRF_TRUSTED_ORIGINS= env("CSRF_TRUSTED_ORIGINS")
 
 # Application definition
 
@@ -160,7 +161,9 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = "en-us"
 
-TIME_ZONE = "Asia/Kolkata"
+TIME_ZONE = env("TIMEZONE")
+
+USE_L10N = True
 
 USE_I18N = True
 
@@ -227,14 +230,6 @@ LANGUAGES = (
 LOCALE_PATHS = [
     join(BASE_DIR, "horilla", "locale"),
 ]
-
-TIME_ZONE = "Asia/Kolkata"
-
-USE_I18N = True
-
-USE_L10N = True
-
-USE_TZ = True
 
 # Production settings
 if not DEBUG:
