@@ -448,7 +448,7 @@ def clock_out(request):
         mouse_out = """onmouseleave="$(this).find('div.at-work-seconds').show();$(this).find('span').hide();" """
     return HttpResponse(
         """
-              <button class="oh-btn oh-btn--success-outline mr-2"
+              <button style="display: none;" class="oh-btn oh-btn--success-outline mr-2"
               {mouse_in}
               {mouse_out}
               hx-get="/attendance/clock-in"
